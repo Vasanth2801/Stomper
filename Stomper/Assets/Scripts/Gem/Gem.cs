@@ -7,6 +7,7 @@ public class Gem : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             GemCollector.instance.AddGem();
+            AudioManager.instance.PlayPickSound();
             Destroy(gameObject);
         }
     }

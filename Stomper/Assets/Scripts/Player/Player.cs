@@ -60,10 +60,12 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
+        
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
 
         if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
+            AudioManager.instance.PlayJumpSound();
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
     }

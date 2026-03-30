@@ -2,15 +2,30 @@ using UnityEngine;
 
 public class PatrolEnemy : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("Movement Settings")]
+    [SerializeField] private float speed = 2f;
+
+    [Header("References")]
+    [SerializeField] private Rigidbody2D rb;
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        rb.linearVelocity = new Vector2(speed, rb.linearVelocity.y);
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        speed = -speed;
+        FlipEnemy();
+    }
+
+    void FlipEnemy()
+    {
+        transform.localScale = new Vector2(-Mathf.Sign(rb.linearVelocity.x), 1f);
     }
 }

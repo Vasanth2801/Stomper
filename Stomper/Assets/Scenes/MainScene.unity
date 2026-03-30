@@ -362,8 +362,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObjectPooler
   pools:
   - objectTag: Bullet
-    prefab: {fileID: 0}
+    prefab: {fileID: 8070542290046293667, guid: a4fdcabaf6e0fc842b5215ad774752d5, type: 3}
     size: 40
+--- !u!1 &356928798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 356928799}
+  m_Layer: 0
+  m_Name: FirepoInt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &356928799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356928798}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.765, y: -0.175, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 810337978}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &388446892
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,6 +863,7 @@ GameObject:
   - component: {fileID: 810337979}
   - component: {fileID: 810337981}
   - component: {fileID: 810337980}
+  - component: {fileID: 810337982}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -854,6 +886,7 @@ Transform:
   m_Children:
   - {fileID: 167183645}
   - {fileID: 1242885769}
+  - {fileID: 356928799}
   m_Father: {fileID: 666230245}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &810337979
@@ -942,6 +975,21 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.017146826, y: -0.13031548}
   m_Radius: 0.51714665
+--- !u!114 &810337982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810337977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 285e1fc72793351409fe75f9387809bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shooting
+  bulletForce: 20
+  firePoint: {fileID: 356928799}
+  pooler: {fileID: 339215617}
 --- !u!1 &1242885768
 GameObject:
   m_ObjectHideFlags: 0

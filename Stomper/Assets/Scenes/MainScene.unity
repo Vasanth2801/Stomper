@@ -961,6 +961,7 @@ MonoBehaviour:
     m_Bits: 64
   isGrounded: 0
   rb: {fileID: 810337979}
+  animator: {fileID: 167183647}
   moveInput: 0
 --- !u!58 &810337981
 CircleCollider2D:

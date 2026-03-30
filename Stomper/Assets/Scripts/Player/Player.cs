@@ -16,12 +16,22 @@ public class Player : MonoBehaviour
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
+    [SerializeField] private CapsuleCollider2D capsuleCollider;
+
+    [Header("Duck Settings")]
+    [SerializeField] private Vector2 duckColliderOffset;
+    [SerializeField] private Vector2 standingColliderOffset;
+    [SerializeField] private bool isDucking;
 
     [Header("Input")]
     [SerializeField] private float moveInput;
 
     void Update()
     {
+        if(isDucking)
+        {
+            return;
+        }
         moveInput = Input.GetAxisRaw("Horizontal");
 
         Jump();
@@ -36,6 +46,15 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        Duck();
+
+        DuckUp();
+
+        if (isDucking)
+        {
+            return;
+        }
+
         Move();
     }
 
@@ -54,6 +73,26 @@ public class Player : MonoBehaviour
         }
     }
 
+    void Duck()
+    {
+        if(Input.GetKey(KeyCode.L))
+        {
+            isDucking = true;
+            capsuleCollider.size = duckColliderOffset;
+            animator.SetBool("isDucking", true);
+        }
+    }
+
+    void DuckUp()
+    {
+        if(Input.GetKeyUp(KeyCode.L))
+        {
+            isDucking = false;
+            capsuleCollider.size = standingColliderOffset;
+            animator.SetBool("isDucking", false);
+        }
+    }
+
     void Flip()
     {
         facingDirection *= -1;
@@ -62,6 +101,10 @@ public class Player : MonoBehaviour
 
     void HandleAnimations()
     {
+        if(isDucking)
+        {
+            return;
+        }
         animator.SetFloat("Speed", Mathf.Abs(moveInput));
         animator.SetBool("isJumping", rb.linearVelocity.y > 0.1f);
     }

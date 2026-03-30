@@ -24,6 +24,14 @@ public class PatrolEnemy : MonoBehaviour
         FlipEnemy();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            UIManager.instance.GameOver();
+        }
+    }
+
     void FlipEnemy()
     {
         transform.localScale = new Vector2(-Mathf.Sign(rb.linearVelocity.x), 1f);

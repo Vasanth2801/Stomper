@@ -28,7 +28,7 @@ public class FlyEnemy : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            Time.timeScale = 0;
+            UIManager.instance.GameOver();
         }
     }
 

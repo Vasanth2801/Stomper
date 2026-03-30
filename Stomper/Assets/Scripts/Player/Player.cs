@@ -50,11 +50,6 @@ public class Player : MonoBehaviour
 
         DuckUp();
 
-        if (isDucking)
-        {
-            return;
-        }
-
         Move();
     }
 
